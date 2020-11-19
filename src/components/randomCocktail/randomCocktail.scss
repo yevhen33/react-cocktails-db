@@ -1,0 +1,30 @@
+.random-block {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 10px 0 10px;
+    margin-bottom: 40px;
+    color: #fff;
+    h4 {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    &__img {
+        display: block;
+        margin: 0 auto;
+        width: 70px;
+        height: 70px;
+        &:hover {
+            transform: scale(1.35);
+        }
+        img {
+            width: 100%;
+        }
+    }
+    .term {
+        font-weight: bold;
+    }
+    .list-group-item {
+        background-color: transparent;
+        border-bottom: 1px dotted rgb(194, 194, 194);
+    }
+}
+

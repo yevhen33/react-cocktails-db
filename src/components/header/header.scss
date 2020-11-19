@@ -1,0 +1,23 @@
+.navbar {
+    margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    &-brand {
+        font-weight: bold;
+    }
+    .nav-item {
+        font-size: 14px;
+    }
+    .dropdown {
+        margin-right: 5px;
+        border: 1px dotted rgb(194, 194, 194);
+        border-radius: 0.5rem;
+        &-menu {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        &-item {
+            padding: 0.25rem 1rem;
+            color: #fff;
+        }
+    }
+}
