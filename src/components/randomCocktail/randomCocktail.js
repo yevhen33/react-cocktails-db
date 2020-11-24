@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CocktailServices from '../../services/cocktailServices';
 import './randomCocktail.scss';
 import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 export default class RandomCocktail extends Component {
 
     constructor() {
@@ -12,7 +13,8 @@ export default class RandomCocktail extends Component {
     cocktailServices = new CocktailServices();
     state = {
         cocktail: {},
-        loading: true
+        loading: true,
+        error: false
     }
 
     onCocktailLoaded = (cocktail) => {
@@ -22,22 +24,31 @@ export default class RandomCocktail extends Component {
         })
     }
 
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false
+        })
+    }
+
     updateCocktail() {
         this.cocktailServices.getRandomCocktail()
-            .then(this.onCocktailLoaded);
+            .then(this.onCocktailLoaded)
+            .catch(this.onError);
     }
 
     render() {
-        const { cocktail, loading } = this.state;
+        const { cocktail, loading, error } = this.state;
 
+        const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
-        const content = !loading ? <View cocktail={cocktail}/> : null;
+        const content = !(loading || error) ? <View cocktail={cocktail}/> : null;
+
         return (
             <div className="random-block rounded">
-               
-               {spinner}
-               {content} 
-
+                {errorMessage}
+                {spinner}
+                {content} 
             </div>
         );
     }

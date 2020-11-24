@@ -1,0 +1,19 @@
+.random-block {
+    &__error {
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__message {
+        position: absolute;
+        bottom: 20px;
+        right: 50%;
+        transform: translateX(50%);
+        color: #000;
+        font-size: 17px;
+        font-weight: bold;
+    }
+}
