@@ -5,16 +5,20 @@ import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 export default class RandomCocktail extends Component {
 
-    constructor() {
-        super();
-        this.updateCocktail();
-    }
-
     cocktailServices = new CocktailServices();
     state = {
         cocktail: {},
         loading: true,
         error: false
+    }
+
+    componentDidMount() {
+        this.updateCocktail();
+        this.timerId = setInterval(this.updateCocktail, 5000);  
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
     }
 
     onCocktailLoaded = (cocktail) => {
@@ -31,7 +35,7 @@ export default class RandomCocktail extends Component {
         })
     }
 
-    updateCocktail() {
+    updateCocktail = () => {
         this.cocktailServices.getRandomCocktail()
             .then(this.onCocktailLoaded)
             .catch(this.onError);
