@@ -5,6 +5,7 @@ import RandomCocktail from '../randomCocktail';
 import ItemList from '../itemList';
 import CocktailDetails from '../cocktailDetails';
 import PopularCocktails from '../popularCocktails';
+import IngredientPage from '../ingredientPage';
 import ErrorMessage from '../errorMessage';
 import { Button } from 'reactstrap';
 
@@ -21,12 +22,6 @@ export default class App extends Component {
     componentDidCatch() {
         this.setState({
             error: true
-        })
-    }
-
-    onCocktSelected = (id) => {
-        this.setState({
-            selectedCockt: id
         })
     }
 
@@ -79,16 +74,7 @@ export default class App extends Component {
                                 onClick={this.togglePopularCocktail}>Toggle popular cocktail</Button>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList 
-                            onCocktSelected={this.onCocktSelected}/>
-                        </Col>
-                        <Col md='6'>
-                            <CocktailDetails 
-                            cocktId={this.state.selectedCockt}/>
-                        </Col>
-                    </Row>
+                    <IngredientPage/>
                 </Container>
             </>
         );

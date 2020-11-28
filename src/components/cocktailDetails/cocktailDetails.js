@@ -32,7 +32,6 @@ export default class CocktailDetails extends Component {
             .then((cockt) => {
                 this.setState({cockt})
             })
-        // this.foo.bar = 0;
     }
 
     render() {
