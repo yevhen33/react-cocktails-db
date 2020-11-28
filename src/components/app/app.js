@@ -14,7 +14,20 @@ export default class App extends Component {
     state = {
         showRandomCocktail: true,
         showPopularCocktail: false,
+        selectedCockt: null,
         error: false
+    }
+
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
+    }
+
+    onCocktSelected = (id) => {
+        this.setState({
+            selectedCockt: id
+        })
     }
 
     toggleRandomCocktail = () => {
@@ -68,10 +81,12 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList 
+                            onCocktSelected={this.onCocktSelected}/>
                         </Col>
                         <Col md='6'>
-                            <CocktailDetails />
+                            <CocktailDetails 
+                            cocktId={this.state.selectedCockt}/>
                         </Col>
                     </Row>
                 </Container>

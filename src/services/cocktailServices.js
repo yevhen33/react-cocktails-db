@@ -20,20 +20,29 @@ export default class CocktailServices {
         return cockt[0];
     }
 
-    getByIngredient(id) {
-        return this.getResourses(`/filter.php?i=${id}`);
+    async getByIngredient(id) {
+        const res = await this.getResourses(`/filter.php?i=${id}`);
+        const {drinks} = res;
+        return drinks.map(this._transformCocktail);
     }
 
-    getByCategory(id) {
-        return this.getResourses(`/filter.php?c=${id}`);
+    async getByCategory(id) {
+        const res = await this.getResourses(`/filter.php?c=${id}`);
+        const {drinks} = res;
+        return drinks.map(this._transformCocktail);
     }
 
-    getByGlass(id) {
-        return this.getResourses(`/filter.php?g=${id}`);
+    async getByGlass(id) {
+        const res = await this.getResourses(`/filter.php?g=${id}`);
+        const {drinks} = res;
+        return drinks.map(this._transformCocktail);
     }
 
-    getFullCocktailDetails(id) {
-        return this.getResourses(`/lookup.php?i=${id}`);
+    async getFullCocktailDetails(id) {
+        const res = await this.getResourses(`/lookup.php?i=${id}`);
+        const {drinks} = res;
+        const cockt = drinks.map(this._transformDetailsCocktail);
+        return cockt[0];
     }
 
     _transformRandomCocktail(cocktail) {
@@ -44,5 +53,43 @@ export default class CocktailServices {
             strCategory: cocktail.strCategory,
             strGlass: cocktail.strGlass
         } 
+    }
+
+    _transformCocktail(res) {
+        return {
+            strDrink: res.strDrink,
+            idDrink: res.idDrink 
+        }
+    }
+
+    _transformDetailsCocktail(res) {
+        return {
+            strDrink: res.strDrink,
+            strDrinkThumb: res.strDrinkThumb,
+            strAlcoholic: res.strAlcoholic,
+            strCategory: res.strCategory,
+            strGlass: res.strGlass,
+            strInstructions: res.strInstructions,
+            strIngredient1: res.strIngredient1,
+            strIngredient2: res.strIngredient2,
+            strIngredient3: res.strIngredient3,
+            strIngredient4: res.strIngredient4,
+            strIngredient5: res.strIngredient5,
+            strIngredient6: res.strIngredient6,
+            strIngredient7: res.strIngredient7,
+            strIngredient8: res.strIngredient8,
+            strIngredient9: res.strIngredient9,
+            strIngredient10: res.strIngredient10,
+            strMeasure1: res.strMeasure1,
+            strMeasure2: res.strMeasure2,
+            strMeasure3: res.strMeasure3,
+            strMeasure4: res.strMeasure4,
+            strMeasure5: res.strMeasure5,
+            strMeasure6: res.strMeasure6,
+            strMeasure7: res.strMeasure7,
+            strMeasure8: res.strMeasure8,
+            strMeasure9: res.strMeasure9,
+            strMeasure10: res.strMeasure10
+        }
     }
 }

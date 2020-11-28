@@ -14,7 +14,7 @@ export default class RandomCocktail extends Component {
 
     componentDidMount() {
         this.updateCocktail();
-        this.timerId = setInterval(this.updateCocktail, 5000);  
+        this.timerId = setInterval(this.updateCocktail, 15000);  
     }
 
     componentWillUnmount() {

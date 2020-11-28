@@ -36,10 +36,10 @@
     .space {
         margin: 0 5px;
     }
+    &__select-error {
+        color: #fff;
+        text-align: center;
+        font-size: 26px;
+    }
 }
 
-.select-error {
-    color: #fff;
-    text-align: center;
-    font-size: 26px;
-}
