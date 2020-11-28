@@ -3,13 +3,17 @@ import Ingredients from '../ingredients';
 import Instruction from '../instruction';
 import './cocktailDetails.scss';
 import CocktailServices from '../../services/cocktailServices';
+import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 
 
 export default class CocktailDetails extends Component {
 
     cocktailServices = new CocktailServices();
     state = {
-        cockt: null
+        cockt: null,
+        loading: true,
+        error: false
     }
 
     componentDidMount() {
@@ -22,24 +26,53 @@ export default class CocktailDetails extends Component {
         }
     }
 
+    onCocktDetailLoaded = (cockt) => {
+        this.setState({
+            cockt,
+            loading: false
+        })
+    }
+
+    onError() {
+        this.setState({
+            cockt: null,
+            error: true
+        })
+    }
+
     updateCockt() {
         const {cocktId} = this.props;
         if(!cocktId) {
             return;
         }
 
+        this.setState({
+            loading: true
+        })
+
         this.cocktailServices.getFullCocktailDetails(cocktId)
-            .then((cockt) => {
-                this.setState({cockt})
-            })
+            .then(this.onCocktDetailLoaded)
+            .catch(() => this.onError());
     }
 
     render() {
-        if(!this.state.cockt) {
+        const {cockt, loading, error} = this.state;
+
+        if(!cockt && error) {
+            return <ErrorMessage/>
+        }else if(!cockt) {
             return <span className='cocktail-details__select-error'>Please select a cocktail</span> 
         }
 
-        const {strDrink, strDrinkThumb, strAlcoholic, strCategory,strGlass} = this.state.cockt;
+        const {strDrink, strDrinkThumb, strAlcoholic, strCategory,strGlass} = cockt;
+
+        if(loading) {
+            return (
+                <div className="cocktail-details rounded">
+                    <Spinner/>
+                </div>
+            )
+        }
 
         return (
             <div className="cocktail-details rounded">

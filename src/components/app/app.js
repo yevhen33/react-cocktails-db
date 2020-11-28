@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomCocktail from '../randomCocktail';
-import ItemList from '../itemList';
-import CocktailDetails from '../cocktailDetails';
 import PopularCocktails from '../popularCocktails';
 import IngredientPage from '../ingredientPage';
 import ErrorMessage from '../errorMessage';

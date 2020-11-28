@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './itemList.scss';
 import CocktailServices from '../../services/cocktailServices';
 import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 
 
 export default class ItemList extends Component {
@@ -9,35 +10,56 @@ export default class ItemList extends Component {
     cocktailServices = new CocktailServices();
 
     state = {
-        cocktList: null
+        cocktList: null,
+        error: false
     }
 
     componentDidMount() {
         this.cocktailServices.getByIngredient('Gin')
             .then( (cocktList) => {
                 this.setState({
-                    cocktList
+                    cocktList,
+                    error: false
                 })
             })
+            .catch(() => this.onError());
+    }
+
+    componentDidCatch() {
+        this.setState({
+            cocktList: null,
+            error: true
+        })
+    }
+
+    onError() {
+        this.setState({
+            cocktList: null,
+            error: true
+        })
     }
 
     renderItem(arr) {
         return arr.map((item) => {
-            let id = item.idDrink;
+            const {idDrink, strDrink} = item;
             return (
                 <li 
-                key={id}
+                key={idDrink}
                 className="list-group-item"
-                onClick={() => this.props.onCocktSelected(id)}
+                onClick={() => this.props.onCocktSelected(idDrink)}
                 >
-                    {item.strDrink}
+                    {strDrink}
                 </li>
             )
         })
     }
 
     render() {
-        const {cocktList} = this.state;
+        const {cocktList, error} = this.state;
+
+        if (error) {
+            return <ErrorMessage/>
+        }
 
         if(!cocktList) {
             return <Spinner/>
