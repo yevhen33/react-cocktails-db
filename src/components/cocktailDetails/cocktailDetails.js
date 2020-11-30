@@ -96,8 +96,10 @@ export default class CocktailDetails extends Component {
                         <span>{strGlass}</span>
                     </li>
                     <li className="list-group-item d-flex justify-content-between">
-                        <Ingredients/> 
-                        <Instruction/>
+                        <Ingredients
+                            ingList={cockt}/> 
+                        <Instruction
+                            instruct={cockt}/>
                     </li>
                 </ul>
             </div>

@@ -6,14 +6,15 @@ const Instruction = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const {instruct: {strInstructions} } = props;
+
   return (
     <div>
       <Button outline color="secondary" onClick={toggle} style={{ marginBottom: '1rem' }}>Instruction</Button>
       <Collapse isOpen={isOpen}>
         <Card>
           <CardBody>
-          Rub the rim of the glass with the lime slice to make the salt stick to it. 
-          Take care to moisten only the outer rim and sprinkle the salt on it.
+            {strInstructions}
           </CardBody>
         </Card>
       </Collapse>

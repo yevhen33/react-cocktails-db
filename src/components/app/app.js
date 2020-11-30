@@ -13,7 +13,6 @@ export default class App extends Component {
     state = {
         showRandomCocktail: true,
         showPopularCocktail: false,
-        selectedCockt: null,
         error: false
     }
 
