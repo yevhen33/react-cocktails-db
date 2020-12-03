@@ -3,7 +3,7 @@ export default class CocktailServices {
         this._apiBase = 'https://www.thecocktaildb.com/api/json/v1/1';
     }
 
-    async getResourses(url) {
+    getResourses = async (url) => {
         let resull = await fetch(`${this._apiBase}${url}`);
     
         if (!resull.ok) {
@@ -13,32 +13,32 @@ export default class CocktailServices {
         return await resull.json();
     }
 
-    async getRandomCocktail() {
+    getRandomCocktail = async () => {
         const res = await this.getResourses('/random.php');
         const {drinks} = res;
         const cockt = drinks.map(this._transformRandomCocktail);
         return cockt[0];
     }
 
-    async getByIngredient(id) {
+    getByIngredient = async (id) => {
         const res = await this.getResourses(`/filter.php?i=${id}`);
         const {drinks} = res;
         return drinks.map(this._transformCocktail);
     }
 
-    async getByCategory(id) {
+    getByCategory = async (id) => {
         const res = await this.getResourses(`/filter.php?c=${id}`);
         const {drinks} = res;
         return drinks.map(this._transformCocktail);
     }
 
-    async getByGlass(id) {
+    getByGlass = async (id) => {
         const res = await this.getResourses(`/filter.php?g=${id}`);
         const {drinks} = res;
         return drinks.map(this._transformCocktail);
     }
 
-    async getFullCocktailDetails(id) {
+    getFullCocktailDetails = async (id) => {
         const res = await this.getResourses(`/lookup.php?i=${id}`);
         const {drinks} = res;
         const cockt = drinks.map(this._transformDetailsCocktail);

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
 import CocktailDetails from '../cocktailDetails';
 import ErrorMessage from '../errorMessage';
-
+import CocktailServices from '../../services/cocktailServices';
+import RowBlock from '../rowBlock';
 
 export default class IngredientPage extends Component {
+  cocktailServices = new CocktailServices();
+
     state = {
         selectedCockt: null,
         error: false
@@ -25,22 +27,27 @@ export default class IngredientPage extends Component {
 
     render() {
         const {selectedCockt, error} = this.state;
-
         if(error) {
             return <ErrorMessage/>
         }
 
+        const itemList = (
+            <ItemList 
+                onCocktSelected={this.onCocktSelected}
+                getData={this.cocktailServices.getByIngredient('Rum')}
+                renderItem={(item) => item.strDrink}
+            />
+        )
+
+        const cocktailDetails = (
+            <CocktailDetails 
+                cocktId={selectedCockt}/>
+        )
+ 
         return (
-            <Row>
-                <Col md='6'>
-                    <ItemList 
-                    onCocktSelected={this.onCocktSelected}/>
-                </Col>
-                <Col md='6'>
-                    <CocktailDetails 
-                    cocktId={selectedCockt}/>
-                </Col>
-            </Row>
+            <RowBlock 
+                left={itemList}
+                right={cocktailDetails}/>
         )
     }
 }

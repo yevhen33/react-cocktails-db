@@ -13,8 +13,16 @@ export default class App extends Component {
     state = {
         showRandomCocktail: true,
         showPopularCocktail: false,
+        searchCockt: null,
         error: false
+    } 
+
+    onSearch = (id) => {
+        this.setState({
+            searchCockt: id
+        })
     }
+    
 
     componentDidCatch() {
         this.setState({
@@ -51,8 +59,11 @@ export default class App extends Component {
         return (
             <> 
                 <Container>
-                    <Header />
-                </Container>
+                    <Header 
+                    onSearch={this.onSearch}
+                    renderSearch={(item) => item}
+                    />
+                </Container> 
                 <Container>
                     <Row>
                         <Col md={{size: 5, offset: 0}}>
@@ -71,7 +82,9 @@ export default class App extends Component {
                                 onClick={this.togglePopularCocktail}>Toggle popular cocktail</Button>
                         </Col>
                     </Row>
-                    <IngredientPage/>
+                    <IngredientPage 
+                    searchId={this.state.searchCockt}
+                    />
                 </Container>
             </>
         );

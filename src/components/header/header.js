@@ -16,11 +16,68 @@ import {
 
 import './header.scss'; 
 
-const Header = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
 
+const ingredients = [
+  'Rum',
+  'Gin',
+  'Scotch',
+  'Brandy',
+  'Champagne',
+  'Bourbon',
+  'Tequila',
+  'Vodka',
+  'Pisco',
+  'Grapes'
+];
+const categories = [
+  'Ordinary Drink',
+  'Cocktail',
+  'Milk / Float / Shake',
+  'Other/Unknown',
+  'Shot',
+  'Homemade Liqueur',
+  'Punch / Party Drink',
+  'Beer',
+  'Coffee / Tea',
+  'Soft Drink / Soda'
+];
+const glass = [
+  'Highball glass',
+  'Cocktail glass',
+  'Old-fashioned glass',
+  'Collins glass',
+  'Brandy snifter',
+  'White wine glass',
+  'Shot glass',
+  'Beer Glass',
+  'Margarita glass',
+  'Martini Glass'
+];
+
+const Header = ({onSearch, renderSearch}) => {
+
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  function renderDropdownItem(arr) {
+    return arr.map(item => {
+      let label = renderSearch(item);
+      return (  
+        <DropdownItem
+          key={item}
+          onClick={() => onSearch(label)}
+          >{label}
+          </DropdownItem>
+      )
+    })
+  }
+
+  const itemsIng = renderDropdownItem(ingredients);
+  const itemsCateg = renderDropdownItem(categories);
+  const itemsGlass = renderDropdownItem(glass);
+
+  // console.log(onSearch(item));
+  
   return (
     <div>
       <Navbar expand="md">
@@ -37,16 +94,7 @@ const Header = (props) => {
                 Cocktail by ingredient
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Rum</DropdownItem>
-                <DropdownItem>Gin</DropdownItem>
-                <DropdownItem>Scotch</DropdownItem>
-                <DropdownItem>Brandy</DropdownItem>
-                <DropdownItem>Champagne</DropdownItem>
-                <DropdownItem>Bourbon</DropdownItem>
-                <DropdownItem>Tequila</DropdownItem>
-                <DropdownItem>Vodka</DropdownItem>
-                <DropdownItem>Pisco</DropdownItem>
-                <DropdownItem>Grapes</DropdownItem>
+                {itemsIng}
               </DropdownMenu>
             </UncontrolledDropdown>
 
@@ -55,16 +103,7 @@ const Header = (props) => {
                 Cocktail by Category
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Ordinary Drink</DropdownItem>
-                <DropdownItem>Cocktail</DropdownItem>
-                <DropdownItem>Milk / Float / Shake</DropdownItem>
-                <DropdownItem>Other/Unknown</DropdownItem>
-                <DropdownItem>Shot</DropdownItem>
-                <DropdownItem>Homemade Liqueur</DropdownItem>
-                <DropdownItem>Punch / Party Drink</DropdownItem>
-                <DropdownItem>Beer</DropdownItem>
-                <DropdownItem>Coffee / Tea</DropdownItem>
-                <DropdownItem>Soft Drink / Soda</DropdownItem>
+                {itemsCateg}
               </DropdownMenu>
             </UncontrolledDropdown>
 
@@ -73,16 +112,7 @@ const Header = (props) => {
                 Cocktail by Glass
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Highball glass</DropdownItem>
-                <DropdownItem>Cocktail glass</DropdownItem>
-                <DropdownItem>Old-fashioned glass</DropdownItem>
-                <DropdownItem>Collins glass</DropdownItem>
-                <DropdownItem>Brandy snifter</DropdownItem>
-                <DropdownItem>White wine glass</DropdownItem>
-                <DropdownItem>Shot glass</DropdownItem>
-                <DropdownItem>Beer Glass</DropdownItem>
-                <DropdownItem>Margarita glass</DropdownItem>
-                <DropdownItem>Martini Glass</DropdownItem>
+                {itemsGlass}
               </DropdownMenu>
             </UncontrolledDropdown>
 
