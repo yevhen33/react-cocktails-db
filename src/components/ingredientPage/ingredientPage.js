@@ -9,7 +9,7 @@ export default class IngredientPage extends Component {
   cocktailServices = new CocktailServices();
 
     state = {
-        selectedCockt: null,
+        selectedItem: null,
         error: false
     }
 
@@ -19,21 +19,21 @@ export default class IngredientPage extends Component {
         })
     }
 
-    onCocktSelected = (id) => {
+    onItemSelected = (id) => {
         this.setState({
-            selectedCockt: id
+            selectedItem: id
         })
     }
 
     render() {
-        const {selectedCockt, error} = this.state;
+        const {selectedItem, error} = this.state;
         if(error) {
             return <ErrorMessage/>
         }
 
         const itemList = (
             <ItemList 
-                onCocktSelected={this.onCocktSelected}
+                onItemSelected={this.onItemSelected}
                 getData={this.cocktailServices.getByIngredient('Rum')}
                 renderItem={(item) => item.strDrink}
             />
@@ -41,7 +41,7 @@ export default class IngredientPage extends Component {
 
         const cocktailDetails = (
             <CocktailDetails 
-                cocktId={selectedCockt}/>
+                itemId={selectedItem}/>
         )
  
         return (

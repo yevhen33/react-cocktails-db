@@ -46,7 +46,7 @@ export default class ItemList extends Component {
                 <li 
                 key={idDrink}
                 className="list-group-item"
-                onClick={() => this.props.onCocktSelected(idDrink)}
+                onClick={() => this.props.onItemSelected(idDrink)}
                 >
                     {label}
                 </li>

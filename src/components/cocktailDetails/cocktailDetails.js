@@ -21,7 +21,7 @@ export default class CocktailDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.cocktId !== prevProps.cocktId) {
+        if (this.props.itemId !== prevProps.itemId) {
             this.updateCockt();
         }
     }
@@ -41,8 +41,8 @@ export default class CocktailDetails extends Component {
     }
 
     updateCockt() {
-        const {cocktId} = this.props;
-        if(!cocktId) {
+        const {itemId} = this.props;
+        if(!itemId) {
             return;
         }
 
@@ -50,7 +50,7 @@ export default class CocktailDetails extends Component {
             loading: true
         })
 
-        this.cocktailServices.getFullCocktailDetails(cocktId)
+        this.cocktailServices.getFullCocktailDetails(itemId)
             .then(this.onCocktDetailLoaded)
             .catch(() => this.onError());
     }
