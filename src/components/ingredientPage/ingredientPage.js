@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ItemList from '../itemList';
-import CocktailDetails from '../cocktailDetails';
+import CocktailDetails, {Field, FieldBtn} from '../cocktailDetails';
 import ErrorMessage from '../errorMessage';
 import CocktailServices from '../../services/cocktailServices';
 import RowBlock from '../rowBlock';
@@ -40,8 +40,12 @@ export default class IngredientPage extends Component {
         )
 
         const cocktailDetails = (
-            <CocktailDetails 
-                itemId={selectedItem}/>
+            <CocktailDetails itemId={selectedItem}>
+                <Field field='strAlcoholic' label='Alcoholic'/>
+                <Field field='strCategory' label='Category'/>
+                <Field field='strGlass' label='Glass'/>
+                <FieldBtn/>
+            </CocktailDetails>
         )
  
         return (

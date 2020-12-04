@@ -6,7 +6,33 @@ import CocktailServices from '../../services/cocktailServices';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
+const Field = ({cockt, field, label}) => {
+    return (
+        <li className="list-group-item d-flex justify-content-between">
+            <span className="term">{label}</span>
+            <span>{cockt[field]}</span>
+        </li>
+    )
+}
 
+export {
+    Field
+}
+
+const FieldBtn = ({cockt}) => {
+    return (
+        <li className="list-group-item d-flex justify-content-between">
+            <Ingredients
+                ingList={cockt}/> 
+            <Instruction
+                instruct={cockt}/>
+        </li>
+    )
+}
+
+export {
+    FieldBtn
+}
 export default class CocktailDetails extends Component {
 
     cocktailServices = new CocktailServices();
@@ -83,7 +109,12 @@ export default class CocktailDetails extends Component {
                     </div>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item d-flex justify-content-between">
+                    {
+                        React.Children.map(this.props.children, (child) => {
+                            return React.cloneElement(child, {cockt})
+                        })
+                    }
+                    {/* <li className="list-group-item d-flex justify-content-between">
                         <span className="term">Alcoholic</span>
                         <span>{strAlcoholic}</span>
                     </li>
@@ -94,13 +125,13 @@ export default class CocktailDetails extends Component {
                     <li className="list-group-item d-flex justify-content-between">
                         <span className="term">Glass</span>
                         <span>{strGlass}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
+                    </li> */}
+                    {/* <li className="list-group-item d-flex justify-content-between">
                         <Ingredients
                             ingList={cockt}/> 
                         <Instruction
                             instruct={cockt}/>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         );
