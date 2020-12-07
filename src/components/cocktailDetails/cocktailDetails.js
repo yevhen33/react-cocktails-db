@@ -90,7 +90,7 @@ export default class CocktailDetails extends Component {
             return <span className='cocktail-details__select-error'>Please select a cocktail</span> 
         }
 
-        const {strDrink, strDrinkThumb, strAlcoholic, strCategory,strGlass} = cockt;
+        const {strDrink, strDrinkThumb} = cockt;
 
         if(loading) {
             return (
@@ -114,24 +114,6 @@ export default class CocktailDetails extends Component {
                             return React.cloneElement(child, {cockt})
                         })
                     }
-                    {/* <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Alcoholic</span>
-                        <span>{strAlcoholic}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Category</span>
-                        <span>{strCategory}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Glass</span>
-                        <span>{strGlass}</span>
-                    </li> */}
-                    {/* <li className="list-group-item d-flex justify-content-between">
-                        <Ingredients
-                            ingList={cockt}/> 
-                        <Instruction
-                            instruct={cockt}/>
-                    </li> */}
                 </ul>
             </div>
         );

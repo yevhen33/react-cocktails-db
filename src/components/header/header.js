@@ -116,6 +116,10 @@ const Header = ({onSearch, renderSearch}) => {
               </DropdownMenu>
             </UncontrolledDropdown>
 
+            <NavItem>
+              <NavLink href="/">About Alcohol</NavLink>
+            </NavItem>
+
           </Nav>
           <NavbarText>Pleasant Use</NavbarText>
         </Collapse>

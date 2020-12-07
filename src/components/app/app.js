@@ -3,7 +3,7 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomCocktail from '../randomCocktail';
 import PopularCocktails from '../popularCocktails';
-import IngredientPage from '../ingredientPage';
+import {IngredientPage, CategoryPage, GlassPage, MainBlock, AlcoholPage} from '../pages';
 import ErrorMessage from '../errorMessage';
 import { Button } from 'reactstrap';
 
@@ -82,9 +82,13 @@ export default class App extends Component {
                                 onClick={this.togglePopularCocktail}>Toggle popular cocktail</Button>
                         </Col>
                     </Row>
-                    <IngredientPage 
+                    {/* <IngredientPage 
                     searchId={this.state.searchCockt}
                     />
+                    <CategoryPage/>
+                    <GlassPage/> */}
+                    {/* <MainBlock/> */}
+                    <AlcoholPage/>
                 </Container>
             </>
         );

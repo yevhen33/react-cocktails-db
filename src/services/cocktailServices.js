@@ -45,6 +45,13 @@ export default class CocktailServices {
         return cockt[0];
     }
 
+    getAlcoholDetails = async (id) => {
+        const res = await this.getResourses(`/search.php?i=${id}`);
+        const {ingredients} = res;
+        const alcohol = ingredients.map(this._transformAlcohol);
+        return alcohol[0];
+    }
+
     _transformRandomCocktail(cocktail) {
         return {
             strDrink: cocktail.strDrink,
@@ -91,5 +98,14 @@ export default class CocktailServices {
             measure9: res.strMeasure9,
             measure10: res.strMeasure10
         }
+    }
+
+    _transformAlcohol(res) {
+        return {
+            drink: res.strIngredient,
+            alcohol: res.strABV,
+            type: res.strType,
+            description: res.strDescription
+        } 
     }
 }
