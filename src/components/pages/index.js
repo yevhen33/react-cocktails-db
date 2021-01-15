@@ -1,13 +1,13 @@
-import IngredientPage from './ingredientPage';
-import CategoryPage from './categoryPage';
-import GlassPage from './glassPage';
 import MainBlock from './mainPage';
+import SearchIngradient from './searchIngredient';
+import SearchGlass from './searchGlass';
+import SearchCategory from './searchCategory';
 import AlcoholPage from './alcoholPage';
 
 export {
-    IngredientPage,
-    CategoryPage,
-    GlassPage,
     MainBlock,
+    SearchIngradient,
+    SearchGlass,
+    SearchCategory,
     AlcoholPage
 };

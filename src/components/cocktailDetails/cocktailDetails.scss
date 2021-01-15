@@ -52,3 +52,26 @@
     }
 }
 
+.select-element {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    line-height: 40px;
+    border-radius: 10px;
+    padding: 15px 10px;
+}
+
+@media (max-width: 991px) {
+    .select-element {
+        font-size: 18px;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 767px) {
+    .select-element {
+        display: none;
+    }
+}
+

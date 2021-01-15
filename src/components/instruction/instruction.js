@@ -10,9 +10,9 @@ const Instruction = (props) => {
 
   return (
     <div>
-      <Button outline color="secondary" onClick={toggle} style={{ marginBottom: '1rem' }}>Instruction</Button>
+      <Button outline color="secondary" onClick={toggle} style={{ marginBottom: '1rem', float: 'right' }}>Instruction</Button>
       <Collapse isOpen={isOpen}>
-        <Card>
+        <Card style={{ float: 'right' }}>
           <CardBody>
             {strInstructions}
           </CardBody>

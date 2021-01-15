@@ -1,57 +1,57 @@
-import React, {Component} from 'react';
-import ItemList from '../itemList';
-import CocktailDetails, {Field, FieldBtn} from '../cocktailDetails';
-import ErrorMessage from '../errorMessage';
-import CocktailServices from '../../services/cocktailServices';
-import RowBlock from '../rowBlock';
+// import React, {Component} from 'react';
+// import ItemList from '../itemList';
+// import CocktailDetails, {Field, FieldBtn} from '../cocktailDetails';
+// import ErrorMessage from '../errorMessage';
+// import CocktailServices from '../../services/cocktailServices';
+// import RowBlock from '../rowBlock';
 
-export default class IngredientPage extends Component {
-  cocktailServices = new CocktailServices();
+// export default class IngredientPage extends Component {
+//   cocktailServices = new CocktailServices();
 
-    state = {
-        selectedItem: null,
-        error: false
-    }
+//     state = {
+//         selectedItem: null,
+//         error: false
+//     }
 
-    componentDidCatch() {
-        this.setState({
-            error: true
-        })
-    }
+//     componentDidCatch() {
+//         this.setState({
+//             error: true
+//         })
+//     }
 
-    onItemSelected = (id) => {
-        this.setState({
-            selectedItem: id
-        })
-    }
+//     onItemSelected = (id) => {
+//         this.setState({
+//             selectedItem: id
+//         })
+//     }
 
-    render() {
-        const {selectedItem, error} = this.state;
-        if(error) {
-            return <ErrorMessage/>
-        }
+//     render() {
+//         const {selectedItem, error} = this.state;
+//         if(error) {
+//             return <ErrorMessage/>
+//         }
 
-        const itemList = (
-            <ItemList 
-                onItemSelected={this.onItemSelected}
-                getData={this.cocktailServices.getByGlass('Highball glass')}
-                renderItem={(item) => item.strDrink}
-            />
-        )
+//         const itemList = (
+//             <ItemList 
+//                 onItemSelected={this.onItemSelected}
+//                 getData={this.cocktailServices.getByGlass('Highball glass')}
+//                 renderItem={(item) => item.strDrink}
+//             />
+//         )
 
-        const cocktailDetails = (
-            <CocktailDetails itemId={selectedItem}>
-                <Field field='strAlcoholic' label='Alcoholic'/>
-                <Field field='strCategory' label='Category'/>
-                <Field field='strGlass' label='Glass'/>
-                <FieldBtn/>
-            </CocktailDetails>
-        )
+//         const cocktailDetails = (
+//             <CocktailDetails itemId={selectedItem}>
+//                 <Field field='strAlcoholic' label='Alcoholic'/>
+//                 <Field field='strCategory' label='Category'/>
+//                 <Field field='strGlass' label='Glass'/>
+//                 <FieldBtn/>
+//             </CocktailDetails>
+//         )
  
-        return (
-            <RowBlock 
-                left={itemList}
-                right={cocktailDetails}/>
-        )
-    }
-}
+//         return (
+//             <RowBlock 
+//                 left={itemList}
+//                 right={cocktailDetails}/>
+//         )
+//     }
+// }

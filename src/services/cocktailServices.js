@@ -52,6 +52,24 @@ export default class CocktailServices {
         return alcohol[0];
     }
 
+    getSearchIngredient = async() => {
+        const res = await this.getResourses(`/list.php?i=list`);
+        const {drinks} = res;
+        return drinks.map(this._transformSearchIngredient);
+    }
+
+    getSearchCategory = async() => {
+        const res = await this.getResourses(`/list.php?c=list`);
+        const {drinks} = res;
+        return drinks.map(this._transformSearchCategory);
+    }
+
+    getSearchGlass = async() => {
+        const res = await this.getResourses(`/list.php?g=list`);
+        const {drinks} = res;
+        return drinks.map(this._transformSearchGlass);
+    }
+
     _transformRandomCocktail(cocktail) {
         return {
             strDrink: cocktail.strDrink,
@@ -107,5 +125,23 @@ export default class CocktailServices {
             type: res.strType,
             description: res.strDescription
         } 
+    }
+
+    _transformSearchIngredient(res) {
+        return {
+            search: res.strIngredient1
+        }
+    }
+
+    _transformSearchCategory(res) {
+        return {
+            search: res.strCategory
+        }
+    }
+
+    _transformSearchGlass(res) {
+        return {
+            search: res.strGlass
+        }
     }
 }
