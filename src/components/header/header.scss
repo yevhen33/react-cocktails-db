@@ -13,9 +13,31 @@
         margin-right: 5px;
         border: 1px dotted rgb(194, 194, 194);
         border-radius: 0.6rem;
-        font-weight: medium;
+        font-weight: 600;
     }
     .navbar-toggler {
-        border: 1px dotted rgb(194, 194, 194);
+        &-icon {
+            border: 2px solid rgb(194, 194, 194);
+            border-radius: 50%;
+            background: url('./delete.png') no-repeat center center;
+        }
     }
+}
+
+.navbar {
+    .show {
+        .nav-item {
+            text-align: center;
+        }
+        .search {
+            border: none;
+        }
+        .navbar-text {
+            display: block;
+            text-align: center;
+            padding-bottom: 0;
+            font-size: 12px;
+        }
+    }
+    
 }

@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -23,7 +22,7 @@ const Header = (props) => {
   return (
     <div>
       <Navbar expand="md">
-        <NavbarBrand href="/"><Link to='/'>The Cocktail DB</Link></NavbarBrand>
+          <Link className="navbar-brand" to='/'>The Cocktail DB</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -31,16 +30,16 @@ const Header = (props) => {
               <NavLink href="https://github.com/yevhen33">GitHub</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/" className="search"><Link to='/by_ingredient'>Search by ingredient</Link></NavLink>
+              <Link className="search nav-link" to='/by_ingredient'>Search by ingredient</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/" className="search"><Link to='/by_category'>Search by Category</Link></NavLink>
+              <Link className="search nav-link" to='/by_category'>Search by Category</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/" className="search"><Link to='/by_glass'>Search by Glass</Link></NavLink>
+              <Link className="search nav-link" to='/by_glass'>Search by Glass</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/" className="search"><Link to='/about_alcohol'>About Alcohol</Link></NavLink>
+              <Link className="search nav-link" to='/about_alcohol'>About Alcohol</Link>
             </NavItem>
 
           </Nav>

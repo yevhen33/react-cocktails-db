@@ -19,6 +19,39 @@ const MainBlock = styled.div`
         margin-top: 10px;
         font-size: 18px;
     }
+    @media (max-width: 991px) {
+        font-size: 22px;
+        h2 {
+            font-size: 30px;
+        }
+        h3 {
+            font-size: 22px;
+        }
+        h4 {
+            font-size: 16px;
+        }
+    }
+    @media (max-width: 767px) {
+        font-size: 20px;
+        h2 {
+            font-size: 26px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 575px) {
+        font-size: 16px;
+        h2 {
+            font-size: 18px;
+        }
+        h3 {
+            font-size: 16px;
+        }
+        h4 {
+            font-size: 14px;
+        }
+    }
 `;
 
 const MainPage = () => {

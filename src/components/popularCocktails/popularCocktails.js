@@ -7,35 +7,9 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
+import items from './listCocktais';
 import './popularCocktails.scss';
 
-const items = [
-  {
-    src: "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-    altText: "Margarita",
-    caption: "Margarita"
-  },
-  {
-    src: "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg",
-    altText: "Blue Margarita",
-    caption: "Blue Margarita"
-  },
-  {
-    src: "https://www.thecocktaildb.com/images/media/drink/loezxn1504373874.jpg",
-    altText: "Tommy's Margarita",
-    caption: "Tommy's Margarita"
-  },
-  {
-    src: "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
-    altText: "Whitecap Margarita",
-    caption: "Whitecap Margarita"
-  },
-  {
-    src: "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg",
-    altText: "Strawberry Margarita",
-    caption: "Strawberry Margarita"
-  }
-];
 
 const PopularCocktails = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -19,3 +19,9 @@
     max-height: 265px;
     margin-bottom: 40px;
 }
+
+@media (max-width: 575px) {
+    .carousel-inner {
+        margin-bottom: 15px;
+    }
+}

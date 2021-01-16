@@ -28,3 +28,16 @@
     }
 }
 
+@media (max-width: 575px) {
+    .random-block {
+        padding-top: 10px;
+        margin-bottom: 15px;
+        h4 {
+            font-size: 18px;
+        }
+        .list-group-item {
+            padding: 0.5rem 1rem;
+        }
+    }
+}
+
