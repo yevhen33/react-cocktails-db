@@ -30,13 +30,13 @@ const Header = (props) => {
               <NavLink href="https://github.com/yevhen33">GitHub</NavLink>
             </NavItem>
             <NavItem>
-              <Link className="search nav-link" to='/by_ingredient'>Search by ingredient</Link>
+              <Link className="search nav-link" to='/by_ingredient/'>Search by ingredient</Link>
             </NavItem>
             <NavItem>
-              <Link className="search nav-link" to='/by_category'>Search by Category</Link>
+              <Link className="search nav-link" to='/by_category/'>Search by Category</Link>
             </NavItem>
             <NavItem>
-              <Link className="search nav-link" to='/by_glass'>Search by Glass</Link>
+              <Link className="search nav-link" to='/by_glass/'>Search by Glass</Link>
             </NavItem>
             <NavItem>
               <Link className="search nav-link" to='/about_alcohol'>About Alcohol</Link>

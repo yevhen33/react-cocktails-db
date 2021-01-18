@@ -3,10 +3,12 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomCocktail from '../randomCocktail';
 import PopularCocktails from '../popularCocktails';
-import {MainBlock, SearchIngradient, SearchGlass, SearchCategory, AlcoholPage, } from '../pages';
+import {MainBlock, SearchIngradient, SearchGlass, SearchCategory, AlcoholPage } from '../pages';
+import {IngredientPage, CategoryPage, GlassPage} from '../pages';
 import ErrorMessage from '../errorMessage';
 import { Button } from 'reactstrap';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import './app.css';
 
 
 export default class App extends Component {
@@ -75,9 +77,24 @@ export default class App extends Component {
                         </Row>
 
                         <Route path='/' exact component={MainBlock}/>
-                        <Route path='/by_ingredient' component={SearchIngradient}/>
-                        <Route path='/by_category' component={SearchCategory}/>
-                        <Route path='/by_glass' component={SearchGlass}/>
+                        <Route path='/by_ingredient' exact component={SearchIngradient}/>
+                        <Route path='/by_ingredient/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                                return <IngredientPage searchId={id}/>}
+                        }/>
+                        <Route path='/by_category' exact component={SearchCategory}/>
+                        <Route path='/by_category/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                                return <CategoryPage searchId={id}/>}
+                        }/>
+                        <Route path='/by_glass' exact component={SearchGlass}/>
+                        <Route path='/by_glass/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                                return <GlassPage searchId={id}/>}
+                        }/>
                         <Route path='/about_alcohol' component={AlcoholPage}/>
                         
                     </Container>

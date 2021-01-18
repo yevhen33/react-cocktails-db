@@ -3,13 +3,12 @@ import SearchList from '../../searchList';
 import ErrorMessage from '../../errorMessage';
 import CocktailServices from '../../../services/cocktailServices';
 import RowBlock from '../../rowBlock';
-import IngradientPage from './ingredientPage';
+import {withRouter} from 'react-router-dom';
 
-export default class SearchIngradient extends Component {
+class SearchIngradient extends Component {
   cocktailServices = new CocktailServices();
 
     state = {
-        selectedItem: null,
         error: false
     }
 
@@ -19,42 +18,32 @@ export default class SearchIngradient extends Component {
         })
     }
 
-    onItemSelected = (id) => {
-        this.setState({
-            selectedItem: id
-        })
-    }
-
     render() {
-        const {selectedItem, error} = this.state;
+        const {error} = this.state;
         if(error) {
             return <ErrorMessage/>
         }
 
-        const itemList = (
+        const searchList = (
             <SearchList 
-                onItemSelected={this.onItemSelected}
+                onItemSelected={(searchId) => {
+                    this.props.history.push(searchId)
+                }}
                 getData={this.cocktailServices.getSearchIngredient()}
                 renderItem={(item) => item.search}
             />
         )
 
-        const cocktailDetails = (
+        const descr = (
             <div className='select-element'>Select an element of the list for further work  with the application and familiarization with cocktails</div>
         )
 
-        if (selectedItem == null) {
-            return (
-                <RowBlock 
-                    left={itemList}
-                    right={cocktailDetails}/>
-            )
-        }
-
         return (
-            <IngradientPage
-                searchId = {selectedItem}/>
+            <RowBlock 
+                left={searchList}
+                right={descr}/>
         )
-  
     }
 }
+
+export default withRouter(SearchIngradient);

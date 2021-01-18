@@ -34,7 +34,7 @@ export default class IngredientPage extends Component {
         const itemList = (
             <ItemList 
                 onItemSelected={this.onItemSelected}
-                getData={this.cocktailServices.getByIngredient('Rum')}
+                getData={this.cocktailServices.getByIngredient(this.props.searchId)}
                 renderItem={(item) => item.strDrink}
             />
         )

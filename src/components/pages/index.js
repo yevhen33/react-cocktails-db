@@ -1,7 +1,7 @@
 import MainBlock from './mainPage';
-import SearchIngradient from './searchIngredient';
-import SearchGlass from './searchGlass';
-import SearchCategory from './searchCategory';
+import SearchIngradient, {IngredientPage} from './searchIngredient';
+import SearchGlass, {GlassPage} from './searchGlass';
+import SearchCategory, {CategoryPage} from './searchCategory';
 import AlcoholPage from './alcoholPage';
 
 export {
@@ -9,5 +9,8 @@ export {
     SearchIngradient,
     SearchGlass,
     SearchCategory,
-    AlcoholPage
+    AlcoholPage,
+    IngredientPage,
+    GlassPage,
+    CategoryPage
 };
