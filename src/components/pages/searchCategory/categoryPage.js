@@ -27,11 +27,7 @@ export default class CategoryPage extends Component {
 
     render() {
         const {selectedItem, error} = this.state;
-        const search = this.props.searchId;
-        // if (search === 'Milk') {
-        //    return search = 'ooooo';
-        // }
-        console.log(search);
+
         if(error) {
             return <ErrorMessage/>
         }
@@ -39,7 +35,7 @@ export default class CategoryPage extends Component {
         const itemList = (
             <ItemList 
                 onItemSelected={this.onItemSelected}
-                getData={this.cocktailServices.getByCategory(search)}
+                getData={this.cocktailServices.getByCategory(this.props.searchId)}
                 renderItem={(item) => item.strDrink}
             />
         )

@@ -37,7 +37,7 @@ class SearchCategory extends Component {
         const descr = (
             <div className='select-element'>Select an element of the list for further work  with the application and familiarization with cocktails</div>
         )
-
+        
         return (
             <RowBlock 
                 left={searchList}

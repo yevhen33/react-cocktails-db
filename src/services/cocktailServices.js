@@ -27,13 +27,13 @@ export default class CocktailServices {
     }
 
     getByCategory = async (id) => {
-        const res = await this.getResourses(`/filter.php?c=${id}`);
+        const res = await this.getResourses(`/filter.php?c=${this._checkSearchCategory(id)}`);
         const {drinks} = res;
         return drinks.map(this._transformCocktail);
     }
 
     getByGlass = async (id) => {
-        const res = await this.getResourses(`/filter.php?g=${id}`);
+        const res = await this.getResourses(`/filter.php?g=${this._checkSearchGlass(id)}`);
         const {drinks} = res;
         return drinks.map(this._transformCocktail);
     }
@@ -143,5 +143,27 @@ export default class CocktailServices {
         return {
             search: res.strGlass
         }
+    }
+
+    _checkSearchCategory(search) { 
+        if (search === 'Milk ') {
+            search = "Milk / Float / Shake";
+        } if (search === 'Other') {
+            search = 'Other/Unknown';
+        } if (search === 'Coffee ') {
+            search = 'Coffee / Tea';
+        } if (search === 'Punch ') {
+            search = 'Punch / Party Drink';
+        } if (search === 'Soft Drink ') {
+            search = 'Soft Drink / Soda';
+        } 
+        return search;
+    }
+
+    _checkSearchGlass(search) { 
+        if (search === 'Margarita') {
+            search = 'Margarita/Coupette glass';
+        } 
+        return search;
     }
 }
