@@ -1,0 +1,36 @@
+.app {
+    background: url('./bg.jpg') center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    min-height: 100vh;
+}
+
+@media (max-width: 575px) {
+    .app {
+        .rounded {
+            margin-top: 10px;
+            .cocktail-details__header {
+                margin-bottom: 10px;
+                h4 {
+                    margin: 0;
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+            }
+            .list-group-item {
+                padding: 5px 10px;
+                font-size: 14px;
+            }
+            .list-group-item:last-child {
+                padding: 10px 0;
+                .card {
+                    margin: 2px;
+                }
+            }
+            .collapse.show .card .card-body .list-group .list-group-item {
+                padding: 5px 0px;
+                font-size: 12px;
+            }
+        }
+    }
+}

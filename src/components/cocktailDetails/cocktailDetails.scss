@@ -70,10 +70,16 @@
         font-size: 18px;
         line-height: 26px;
     }
+    .cocktail-details__select-error {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 767px) {
     .select-element {
+        display: none;
+    }
+    .cocktail-details__select-error {
         display: none;
     }
 }

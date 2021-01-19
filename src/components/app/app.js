@@ -8,7 +8,7 @@ import {IngredientPage, CategoryPage, GlassPage} from '../pages';
 import ErrorMessage from '../errorMessage';
 import { Button } from 'reactstrap';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import './app.css';
+import './app.scss';
 
 
 export default class App extends Component {
